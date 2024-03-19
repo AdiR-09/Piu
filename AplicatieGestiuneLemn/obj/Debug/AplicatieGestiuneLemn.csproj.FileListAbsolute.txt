@@ -5,3 +5,10 @@ C:\Users\Adi\Desktop\AplicatieGestiuneLemn\AplicatieGestiuneLemn\obj\Debug\Aplic
 C:\Users\Adi\Desktop\AplicatieGestiuneLemn\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.csproj.CoreCompileInputs.cache
 C:\Users\Adi\Desktop\AplicatieGestiuneLemn\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.exe
 C:\Users\Adi\Desktop\AplicatieGestiuneLemn\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.pdb
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\bin\Debug\AplicatieGestiuneLemn.exe.config
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\bin\Debug\AplicatieGestiuneLemn.exe
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\bin\Debug\AplicatieGestiuneLemn.pdb
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.csproj.AssemblyReference.cache
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.csproj.CoreCompileInputs.cache
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.exe
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.pdb

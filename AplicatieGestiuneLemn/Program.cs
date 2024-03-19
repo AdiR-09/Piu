@@ -12,13 +12,21 @@ namespace GestiuneLemn
 {
     class Program
     {
+        static int nrAngajati = 0;
+        static Angajat[] angajati = new Angajat[MAX_ANGAJATI];
+        static int nrMateriiPrime = 0;
+        //static MateriePrima[] materiiPrime = new MateriePrima[MAX_MATERII_PRIME]; // Definim vectorul de materii prime
+        const int MAX_ANGAJATI = 100;
+        const int MAX_MATERII_PRIME = 100; // Definim capacitatea maximă a vectorului de materii prime
+        static MateriePrima[] materiiPrime = new MateriePrima[MAX_MATERII_PRIME]; // Inițializăm array-ul de materii prime
+
+
         static void Main()
         {
             StocMateriePrima stocMateriePrima = new StocMateriePrima();
             Angajat angajatNou = new Angajat();
             MateriePrima materiePrimaNoua = new MateriePrima();
-            int nrAngajati = 0;
-            int nrMateriiPrime = 0;
+
 
             string optiune;
             int ok = 0;
@@ -52,24 +60,43 @@ namespace GestiuneLemn
 
                     case "3":
                         // Adaugă cod pentru afișarea listei de angajați
+                        AfișareListaAngajati();
                         break;
 
                     case "4":
                         // Adaugă cod pentru afișarea listei de materii prime
+                        AfisareListaMateriiPrime();
                         break;
 
                     case "5":
                         if (ok == 1)
                         {
-                            // Adaugare angajat în listă
-                            nrAngajati++;
-                            Console.WriteLine("Angajatul a fost salvat în listă.");
+                            // Verificăm dacă numărul maxim de angajați a fost atins
+                            if (nrAngajati < MAX_ANGAJATI)
+                            {
+                                // Adăugăm noul angajat în array
+                                angajati[nrAngajati] = angajatNou;
+                                nrAngajati++; // Incrementăm numărul de angajați
+                                Console.WriteLine("Angajatul a fost salvat în listă.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Numărul maxim de angajați a fost atins. Nu se poate adăuga mai multe persoane.");
+                            }
                         }
                         else if (ok == 2)
                         {
-                            // Adaugare materie primă în listă
-                            nrMateriiPrime++;
-                            Console.WriteLine("Materia primă a fost salvată în listă.");
+                            // Adăugăm materia primă în array-ul de materii prime
+                            if (nrMateriiPrime < MAX_MATERII_PRIME)
+                            {
+                                materiiPrime[nrMateriiPrime] = materiePrimaNoua;
+                                nrMateriiPrime++;
+                                Console.WriteLine("Materia primă a fost salvată în listă.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Numărul maxim de materii prime a fost atins. Nu se poate adăuga mai multe materii prime.");
+                            }
                         }
                         else
                         {
@@ -121,13 +148,117 @@ namespace GestiuneLemn
             // Creăm un obiect de tip Angajat cu datele introduse și îl returnăm
             return new Angajat(nume, prenume, cnp, dataAngajarii, salariu, departament);
         }
+        public static void AfișareListaAngajati()
+        {
 
+            Console.WriteLine("Lista de angajați:");
 
+            // Verificăm dacă există angajați înregistrati
+            if (nrAngajati == 0)
+            {
+                Console.WriteLine("Nu există angajați înregistrati.");
+                return;
+            }
+
+            // Parcurgem array-ul de angajati și afișăm fiecare angajat
+            for (int i = 0; i < nrAngajati; i++)
+            {
+                Console.WriteLine($"Angajatul {i + 1}:");
+                Console.WriteLine($"Nume: {angajati[i].Nume}");
+                Console.WriteLine($"Prenume: {angajati[i].Prenume}");
+                Console.WriteLine($"CNP: {angajati[i].CNP}");
+                Console.WriteLine($"Data angajării: {angajati[i].DataAngajarii}");
+                Console.WriteLine($"Salariu: {angajati[i].Salariu}");
+                Console.WriteLine($"Departament: {angajati[i].Departament}");
+                Console.WriteLine();
+            }
+        }
+        public static void AfisareListaMateriiPrime()
+        {
+            Console.WriteLine("Lista de materii prime:");
+
+            // Verificăm dacă există materii prime înregistrate
+            if (nrMateriiPrime == 0)
+            {
+                Console.WriteLine("Nu există materii prime înregistrate.");
+                return;
+            }
+
+            // Parcurgem array-ul de materii prime și afișăm fiecare materie primă
+            for (int i = 0; i < nrMateriiPrime; i++)
+            {
+                Console.WriteLine($"Materia prima {i + 1}:");
+                Console.WriteLine($"Denumire: {materiiPrime[i].Denumire}");
+                Console.WriteLine($"Cantitate: {materiiPrime[i].Cantitate}");
+                Console.WriteLine($"Preț unitar: {materiiPrime[i].PretUnitar}");
+                Console.WriteLine();
+            }
+        }
         public static MateriePrima CitireMateriePrimaTastatura()
         {
-            // Adaugă cod pentru citirea informațiilor unei materii prime de la tastatură
-            return new MateriePrima(); // Returnează o materie primă nou creată
+            Console.WriteLine("Introduceți denumirea materiei prime:");
+            string denumire = Console.ReadLine();
+
+            Console.WriteLine("Introduceți tipul materiei prime:");
+            string tipMateriePrima = Console.ReadLine();
+
+            Console.WriteLine("Introduceți lungimea materiei prime:");
+            if (!decimal.TryParse(Console.ReadLine(), out decimal lungime))
+            {
+                Console.WriteLine("Lungimea introdusă nu este într-un format corect. Vă rugăm să reintroduceți lungimea materiei prime.");
+                return null; // În cazul în care lungimea nu este introdusă corect, returnăm null
+            }
+
+            Console.WriteLine("Introduceți diametrul materiei prime:");
+            if (!decimal.TryParse(Console.ReadLine(), out decimal diametru))
+            {
+                Console.WriteLine("Diametrul introdus nu este într-un format corect. Vă rugăm să reintroduceți diametrul materiei prime.");
+                return null; // În cazul în care diametrul nu este introdus corect, returnăm null
+            }
+
+            Console.WriteLine("Introduceți calitatea materiei prime:");
+            string calitate = Console.ReadLine();
+
+            Console.WriteLine("Introduceți data aprovizionării materiei prime (format: ZZ.LL.AAAA):");
+            DateTime dataAprovizionare;
+            if (!DateTime.TryParseExact(Console.ReadLine(), "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out dataAprovizionare))
+            {
+                Console.WriteLine("Data introdusă nu este în formatul corect. Vă rugăm să reintroduceți data aprovizionării materiei prime.");
+                return null; // În cazul în care data nu este introdusă corect, returnăm null
+            }
+
+            Console.WriteLine("Introduceți locația de depozitare a materiei prime:");
+            string locatieDepozitare = Console.ReadLine();
+
+            Console.WriteLine("Introduceți cantitatea materiei prime:");
+            if (!decimal.TryParse(Console.ReadLine(), out decimal cantitate))
+            {
+                Console.WriteLine("Cantitatea introdusă nu este într-un format corect. Vă rugăm să reintroduceți cantitatea materiei prime.");
+                return null; // În cazul în care cantitatea nu este introdusă corect, returnăm null
+            }
+
+            Console.WriteLine("Introduceți prețul unitar al materiei prime:");
+            if (!decimal.TryParse(Console.ReadLine(), out decimal pretUnitar))
+            {
+                Console.WriteLine("Prețul unitar introdus nu este într-un format corect. Vă rugăm să reintroduceți prețul unitar al materiei prime.");
+                return null; // În cazul în care prețul unitar nu este introdus corect, returnăm null
+            }
+
+            // Creăm un obiect de tip MateriePrima cu datele introduse
+            MateriePrima materiePrima = new MateriePrima(tipMateriePrima, lungime, diametru, calitate, dataAprovizionare, locatieDepozitare, denumire, cantitate, pretUnitar);
+
+            // Adăugăm obiectul creat în array-ul materiiPrime
+            materiiPrime[nrMateriiPrime] = materiePrima;
+            nrMateriiPrime++; // Incrementăm numărul de materii prime
+
+            // Returnăm obiectul creat
+            return materiePrima;
         }
+
+
+
+
+
+
     }
 }
-cdwfde
