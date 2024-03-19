@@ -41,7 +41,8 @@ namespace GestiuneLemn
                 Console.WriteLine("3. Afișare lista de angajați");
                 Console.WriteLine("4. Afișare lista de materii prime");
                 Console.WriteLine("5. Salvare angajat/materie primă în listă");
-                Console.WriteLine("6. Inchidere program");
+                Console.WriteLine("6. Cautare dupa criterii-angajati");
+                Console.WriteLine("7. Inchidere program");
 
                 Console.WriteLine("Alegeti o optiune:");
                 optiune = Console.ReadLine();
@@ -103,8 +104,35 @@ namespace GestiuneLemn
                             Console.WriteLine("Nu s-a citit niciun angajat sau materie primă.");
                         }
                         break;
-
                     case "6":
+                        bool continuaCautare = true;
+                        do
+                        {
+                            Console.WriteLine("Criterii de căutare:");
+                            Console.WriteLine("1. Angajații cu salariu sub 2500");
+                            Console.WriteLine("2. Angajații care lucrează în Transport");
+                            Console.WriteLine("3. Revenire la meniul principal");
+                            Console.WriteLine("Alegeți o opțiune:");
+                            string criteriu = Console.ReadLine();
+                            switch (criteriu)
+                            {
+                                case "1":
+                                    CautareAngajatiSalariuSub(2500);
+                                    break;
+                                case "2":
+                                    CautareAngajatiDepartament("Transport");
+                                    break;
+                                case "3":
+                                    continuaCautare = false;
+                                    break;
+                                default:
+                                    Console.WriteLine("Opțiune invalidă! Vă rugăm să selectați o opțiune validă.");
+                                    break;
+                            }
+                        } while (continuaCautare);
+                        break;
+
+                    case "7":
                         Console.WriteLine("Programul se închide...");
                         return;
 
@@ -253,6 +281,42 @@ namespace GestiuneLemn
 
             // Returnăm obiectul creat
             return materiePrima;
+        }
+
+        public static void CautareAngajatiSalariuSub(decimal limitaSalariu)
+        {
+            Console.WriteLine($"Angajații cu salariu sub {limitaSalariu}:");
+            bool gasit = false;
+            foreach (var angajat in angajati)
+            {
+                if (angajat != null && angajat.Salariu < limitaSalariu)
+                {
+                    Console.WriteLine($"Nume: {angajat.Nume}, Prenume: {angajat.Prenume}, Salariu: {angajat.Salariu}");
+                    gasit = true;
+                }
+            }
+            if (!gasit)
+            {
+                Console.WriteLine("Nu s-au găsit angajați conform criteriilor.");
+            }
+        }
+
+        public static void CautareAngajatiDepartament(string departamentCautat)
+        {
+            Console.WriteLine($"Angajații care lucrează în departamentul {departamentCautat}:");
+            bool gasit = false;
+            foreach (var angajat in angajati)
+            {
+                if (angajat != null && angajat.Departament.Equals(departamentCautat, StringComparison.OrdinalIgnoreCase))
+                {
+                    Console.WriteLine($"Nume: {angajat.Nume}, Prenume: {angajat.Prenume}, Departament: {angajat.Departament}");
+                    gasit = true;
+                }
+            }
+            if (!gasit)
+            {
+                Console.WriteLine($"Nu s-au găsit angajați care lucrează în departamentul {departamentCautat}.");
+            }
         }
 
 
