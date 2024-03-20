@@ -36,9 +36,9 @@ namespace GestiuneLemn
                 Console.WriteLine("ATENTIE: Dupa fiecare angajat/materie prima citit(a) de la tastatura " +
                                   "acesta trebuie salvat(a) pentru a ramane in lista respectiva!");
                 Console.WriteLine();
-                Console.WriteLine("1. Citire informații angajat de la tastatură");
-                Console.WriteLine("2. Citire informații materie primă de la tastatură");
-                Console.WriteLine("3. Afișare lista de angajați");
+                Console.WriteLine("1. Citire informatii angajat de la tastatură");
+                Console.WriteLine("2. Citire informatii materie primă de la tastatură");
+                Console.WriteLine("3. Afișare lista de angajati");
                 Console.WriteLine("4. Afișare lista de materii prime");
                 Console.WriteLine("5. Salvare angajat/materie primă în listă");
                 Console.WriteLine("6. Cautare dupa criterii-angajati");
@@ -61,7 +61,7 @@ namespace GestiuneLemn
 
                     case "3":
                         // Adaugă cod pentru afișarea listei de angajați
-                        AfișareListaAngajati();
+                        AfisareListaAngajati();
                         break;
 
                     case "4":
@@ -109,8 +109,8 @@ namespace GestiuneLemn
                         do
                         {
                             Console.WriteLine("Criterii de căutare:");
-                            Console.WriteLine("1. Angajații cu salariu sub 2500");
-                            Console.WriteLine("2. Angajații care lucrează în Transport");
+                            Console.WriteLine("1. Angajatii cu salariu sub 2500");
+                            Console.WriteLine("2. Angajatii care lucrează în Transport");
                             Console.WriteLine("3. Revenire la meniul principal");
                             Console.WriteLine("Alegeți o opțiune:");
                             string criteriu = Console.ReadLine();
@@ -176,31 +176,29 @@ namespace GestiuneLemn
             // Creăm un obiect de tip Angajat cu datele introduse și îl returnăm
             return new Angajat(nume, prenume, cnp, dataAngajarii, salariu, departament);
         }
-        public static void AfișareListaAngajati()
+        public static void AfisareListaAngajati()
         {
-
             Console.WriteLine("Lista de angajați:");
+            Console.WriteLine("............................................................................................................");
+            Console.WriteLine("Nr. | Nume                  | Prenume      | CNP           | Data angajării  | Salariu | Departament");
+            Console.WriteLine("............................................................................................................");
 
-            // Verificăm dacă există angajați înregistrati
+            // Verificăm dacă există angajați înregistrați
             if (nrAngajati == 0)
             {
-                Console.WriteLine("Nu există angajați înregistrati.");
+                Console.WriteLine("Nu există angajați înregistrați.");
                 return;
             }
 
-            // Parcurgem array-ul de angajati și afișăm fiecare angajat
+            // Parcurgem array-ul de angajați și afișăm fiecare angajat
             for (int i = 0; i < nrAngajati; i++)
             {
-                Console.WriteLine($"Angajatul {i + 1}:");
-                Console.WriteLine($"Nume: {angajati[i].Nume}");
-                Console.WriteLine($"Prenume: {angajati[i].Prenume}");
-                Console.WriteLine($"CNP: {angajati[i].CNP}");
-                Console.WriteLine($"Data angajării: {angajati[i].DataAngajarii}");
-                Console.WriteLine($"Salariu: {angajati[i].Salariu}");
-                Console.WriteLine($"Departament: {angajati[i].Departament}");
-                Console.WriteLine();
+                Console.WriteLine($"{i + 1,-4}| {angajati[i].Nume,-21}| {angajati[i].Prenume,-14} | {angajati[i].CNP,-14} | {angajati[i].DataAngajarii.ToString("dd/MM/yyyy"),-17}| {angajati[i].Salariu,-8} | {angajati[i].Departament,-11}");
             }
+            Console.WriteLine("............................................................................................................");
         }
+
+
         public static void AfisareListaMateriiPrime()
         {
             Console.WriteLine("Lista de materii prime:");
@@ -218,13 +216,13 @@ namespace GestiuneLemn
                 Console.WriteLine($"Materia prima {i + 1}:");
                 Console.WriteLine($"Denumire: {materiiPrime[i].Denumire}");
                 Console.WriteLine($"Cantitate: {materiiPrime[i].Cantitate}");
-                Console.WriteLine($"Preț unitar: {materiiPrime[i].PretUnitar}");
+                Console.WriteLine($"Prep unitar: {materiiPrime[i].PretUnitar}");
                 Console.WriteLine();
             }
         }
         public static MateriePrima CitireMateriePrimaTastatura()
         {
-            Console.WriteLine("Introduceți denumirea materiei prime:");
+            Console.WriteLine("Introduceti denumirea materiei prime:");
             string denumire = Console.ReadLine();
 
             Console.WriteLine("Introduceți tipul materiei prime:");
