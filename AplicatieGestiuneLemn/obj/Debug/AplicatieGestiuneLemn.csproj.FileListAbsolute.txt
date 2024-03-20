@@ -12,3 +12,8 @@ C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiu
 C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.csproj.CoreCompileInputs.cache
 C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.exe
 C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\AplicatieGestiuneLemn.pdb
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\bin\Debug\LibrarieModele.dll
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\bin\Debug\LibrarieModele.pdb
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\obj\Debug\Aplicati.7B04244F.Up2Date
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\bin\Debug\NivelStocareDate.dll
+C:\Users\Adi\Desktop\Proiect\Piu\AplicatieGestiuneLemn\bin\Debug\NivelStocareDate.pdb
